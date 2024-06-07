@@ -20,14 +20,15 @@ public class Main {
         products.put(apple.getId(), apple);
         products.put(strawberry.getId(), strawberry);
 
-        System.out.println("商品id：苹果-1,草莓-2");
+        System.out.println("商品id：苹果-1 8元/斤,草莓-2 13元/斤");
         System.out.println("请按格式输入购买的物品信息（商品Id1-斤数 商品Id2-斤数），示例：1-2 2-2");
 
         // 1、若干斤苹果 若干斤草莓
         Car car = getCar();
         if(!Objects.isNull(car.getTotalCommodity())){
             BigDecimal totalPrice = getTotalPrice(car, products);
-            System.out.println(totalPrice);
+            System.out.println("总金额为：" + totalPrice);
+            System.out.println();
         }
         // 2、增加芒果 20元/斤
         System.out.println("新增水果：芒果 id-3 价格 20/斤");
@@ -35,24 +36,28 @@ public class Main {
         Car car1 = getCar();
         if(!Objects.isNull(car.getTotalCommodity())){
             BigDecimal totalPrice = getTotalPrice(car1, products);
-            System.out.println(totalPrice);
+            System.out.println("总金额为：" + totalPrice);
+            System.out.println();
         }
         // 3、草莓打八折
-        System.out.println("草莓打八折");
+        System.out.println("草莓打八折，10.4元/斤");
         Commodity strawberry1 = new Commodity("草莓",2L,new BigDecimal(13),true,new BigDecimal("0.8"));
         products.put(strawberry1.getId(), strawberry1);
         Car car3 = getCar();
         if(!Objects.isNull(car.getTotalCommodity())){
             BigDecimal totalPrice = getTotalPrice(car3, products);
-            System.out.println(totalPrice);
+            System.out.println("总金额为：" + totalPrice);
+            System.out.println();
         }
         // 4、满减
+        System.out.println("满减活动，满100减10");
         Car car4 = getCar();
         car4.setIsFullMinus(true);
         car4.setFullMinus("100-10");
         if(!Objects.isNull(car.getTotalCommodity())){
             BigDecimal totalPrice = getTotalPrice(car4, products);
-            System.out.println(totalPrice);
+            System.out.println("总金额为：" + totalPrice);
+            System.out.println();
         }
     }
 
